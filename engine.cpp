@@ -6,6 +6,7 @@
 
 Engine::Engine(std::string nomearq){
     Movimentos movimentos(nomearq);
+    movimentos.separaJogadas();
     movimentos.getInfoPartida();
     jogadas = movimentos.getJogadas();
 
