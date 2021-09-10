@@ -8,30 +8,36 @@
 Movimentos::Movimentos(std::string arq):nomearq(arq){};
 Movimentos::~Movimentos(){};
 
-void Movimentos::getInfoPartida() {
+
+
+void Movimentos::separaJogadas(){
+    std::size_t vazio; // vai pegar o primeiro espaço entre os movimentos
+    std::string str3; // vai ser onde sera salvo cada movimento de cada jogador
+    int tamanho;
+    int tamanho2;
+    std::string linha;
+
     arquivo.open(nomearq);
     while(arquivo.eof()==false){
         std::getline(arquivo, linha);
         // salva no vetor linhas cada linha
         linhas.push_back(linha);
     };
+    arquivo.close();
     //pega o tamanho do vetor linhas
     tamanho = linhas.size();
 
+    for (int i=0 ; i<11; i++){
+        infoPartida.push_back(linhas[i]);
+    } 
+    
     /*agora ele vai salvar no vetor jogadas as linhas do vetor linha 
     (isso é pq o arquivo pgn tem um padrao de 10 linhas com os dados das jogadas
     e a partir da 11 vem as jogadas de cada jogador)
     */
     for (int i=11 ; i<tamanho; i++){
         jogadas.push_back(linhas[i]);
-    }
-    for (int x =0; x<11; x++){
-        std::cout << linhas[x] << std::endl;
-    }
-    arquivo.close();
-};
-
-std::vector<std::string> Movimentos::getJogadas(){
+    } 
     tamanho = jogadas.size(); //pega o tamanho do vetor de jogadas
 
     for (int i = 0; i<tamanho; i++){
@@ -52,5 +58,16 @@ std::vector<std::string> Movimentos::getJogadas(){
         }
 
     }
+    
+};
+
+void Movimentos::getInfoPartida() {
+    for (int i=0 ; i<11; i++){
+        std::cout <<infoPartida[i] << std::endl;
+    } 
+};
+
+std::vector<std::string> Movimentos::getJogadas(){
     return jogada_por_jogada;
 };
+
