@@ -11,8 +11,11 @@ Movimentos::~Movimentos(){};
 
 
 void Movimentos::separaJogadas(){
+    std::size_t ponto; //vai pegar o "." para poder salvar cada string da jogada sem o numero da rodada
     std::size_t vazio; // vai pegar o primeiro espaço entre os movimentos
     std::string str3; // vai ser onde sera salvo cada movimento de cada jogador
+    std::size_t posicaoUltimo; //pra pegar onde esta o ultimo elemento
+    std::string linhaJogadas;
     int tamanho;
     int tamanho2;
     std::string linha;
@@ -41,23 +44,34 @@ void Movimentos::separaJogadas(){
     tamanho = jogadas.size(); //pega o tamanho do vetor de jogadas
 
     for (int i = 0; i<tamanho; i++){
-        linha_jogadas = jogadas[i]; //pega o elemento do vetor jogadas e transforma apenas numa string
-        tamanho2 = linha_jogadas.size(); //pega o tamanho dessa string
-        tamanho_ultimo = linha_jogadas.find_last_of(" "); //pega a posicao do ultimo elemento
-        ultimo = linha_jogadas.substr(tamanho_ultimo+1); // pega qual e o ultimo elemento
+        linhaJogadas = jogadas[i]; //pega o elemento do vetor jogadas e transforma apenas numa string
+        tamanho2 = linhaJogadas.size(); //pega o tamanho dessa string
+        posicaoUltimo = linhaJogadas.find_last_of(" "); //pega a posicao do ultimo elemento
+        ultimo = linhaJogadas.substr(posicaoUltimo+1); // pega qual e o ultimo elemento
         for (int i=0; i<tamanho2; i++){
-            vazio = linha_jogadas.find(" ");
-            str3 = linha_jogadas.substr(0,vazio); //pega o elemento antes do primeiro " " da string
-            jogada_por_jogada.push_back(str3); //joga esse elemento no vetor de jogadas
-            linha_jogadas.erase(0,vazio+1); //apaga esse primeiro elemento
+            vazio = linhaJogadas.find(" ");
+            str3 = linhaJogadas.substr(0,vazio); //pega o elemento antes do primeiro " " da string
+            jogadaPorJogada.push_back(str3); //joga esse elemento no vetor de jogadas
+            linhaJogadas.erase(0,vazio+1); //apaga esse primeiro elemento
 
             // verifica se o elemento da vez é o ultimo da string, se for, para o loop
             if (str3.compare(ultimo)==0){
                 i=tamanho2;
             }
         }
-
     }
+    tamanho = jogadaPorJogada.size();
+    for (int i=0; i<tamanho; i++){
+        if (i%2==0){
+            str3 = jogadaPorJogada[i];
+            ponto = str3.find(".");
+            str3 = str3.substr(ponto+1);
+            jogadasTabuleiro.push_back(str3);
+        }else {
+            jogadasTabuleiro.push_back(jogadaPorJogada[i]);
+        }
+    }
+    
     
 };
 
@@ -68,6 +82,9 @@ void Movimentos::getInfoPartida() {
 };
 
 std::vector<std::string> Movimentos::getJogadas(){
-    return jogada_por_jogada;
+    return jogadaPorJogada;
 };
 
+std::vector<std::string> Movimentos::getJogadasTabuleiro(){
+    return jogadasTabuleiro;
+}

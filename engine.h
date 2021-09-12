@@ -11,6 +11,7 @@ private:
     unsigned char enter = 13;
     unsigned char letra_q = 113;
     std::vector<std::string> jogadas;
+    std::vector<std::string> jogadasTabuleiro;
 };
 
 #endif
