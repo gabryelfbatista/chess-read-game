@@ -7,25 +7,6 @@ Tabuleiro::Tabuleiro(){};
 Tabuleiro::~Tabuleiro(){};
 
 void Tabuleiro::carrega_tabuleiro(){
-    /*
-    for (int i=0; i<45 ; i++){
-        if ((i>=1 && i<4) || (i>=5 && i<8) || (i>= 9 && i<13)){
-            for (int x=0; x<8; x++){
-                std::cout << bordas<< "     ";
-                if (x==7){
-                    std::cout << bordas << std::endl;
-                }
-            }
-        }else {
-            for (int j=0; j<48; j++){
-                std::cout << bordas;
-                if (j==47){
-                std::cout << bordas<< std::endl;
-                }
-            }   
-        }                      
-    }
-    */
     for (int i=0; i<33; i++){
         for (int j=0; j<49; j++){
             tabuleiros[i][j] = bordas;
@@ -119,6 +100,192 @@ void Tabuleiro::imprime_tabuleiro(){
     }   
 };
 
-void Tabuleiro::setPosicaoPeca(int lin, int col){
+
+void Tabuleiro::verifica_jogada(std::string jogada, int vezJogador){
+    if (vezJogador==1){
+        if (jogada.compare("e4")==0){
+            this->setPosicaoPeca(6,4,4,4);
+        }
+        if (jogada.compare("Nf3")==0){
+            if (pecas[7][6]=='c'){
+                this->setPosicaoPeca(7,6,5,5);
+            }
+            if (pecas[3][4]=='c'){
+                this->setPosicaoPeca(3,4,5,5);
+            }  
+        }
+        if (jogada.compare("Nxe5")==0){
+            this->setPosicaoPeca(5,5,3,4);
+        }
+        if (jogada.compare("Qe2")==0){
+            this->setPosicaoPeca(7,3,6,4);
+        }
+        if (jogada.compare("d3")==0){
+            this->setPosicaoPeca(6,3,5,3);
+        }
+        if (jogada.compare("Nc3")==0){
+            this->setPosicaoPeca(7,1,5,2);
+        }
+        if (jogada.compare("Bxe2")==0){
+            this->setPosicaoPeca(7,5,6,4);
+        }
+        if (jogada.compare("Bg5")==0){
+            this->setPosicaoPeca(7,2,3,6);
+        }
+        if (jogada.compare("O-O-O")==0){
+            this->setPosicaoPeca(7,4,7,2);
+            this->setPosicaoPeca(7,0,7,3);
+        }
+        if (jogada.compare("Rhe1")==0){
+            this->setPosicaoPeca(7,7,7,4);
+        }
+        if (jogada.compare("Bxf6")==0){
+            this->setPosicaoPeca(3,6,2,5);
+        }
+        if (jogada.compare("Nd5")==0){
+            this->setPosicaoPeca(5,2,3,3);
+        }
+        if (jogada.compare("Ne7+")==0){
+            this->setPosicaoPeca(3,3,1,4);
+        }
+        if (jogada.compare("Nxd4")==0){
+            this->setPosicaoPeca(5,5,4,3);
+        }
+        if (jogada.compare("Bb5")==0){
+            this->setPosicaoPeca(7,5,3,1);
+        }
+        if (jogada.compare("Ba4")==0){
+            this->setPosicaoPeca(3,1,4,0);
+        }
+        if (jogada.compare("O-O")==0){
+            this->setPosicaoPeca(7,4,7,6);
+            this->setPosicaoPeca(7,7,7,5);
+        }
+        if (jogada.compare("h3")==0){
+            this->setPosicaoPeca(6,7,5,7);
+        }
+        if (jogada.compare("Ne2")==0){
+            this->setPosicaoPeca(5,2,6,4);
+        }
+        if (jogada.compare("c3")==0){
+            this->setPosicaoPeca(6,2,5,2);
+        }
+        if (jogada.compare("d4")==0){
+            if(pecas[6][3]=='p'){
+                this->setPosicaoPeca(6,3,4,3);
+            }
+            if(pecas[5][3]=='p'){
+                this->setPosicaoPeca(5,3,4,3);
+            }
+        }
+        if (jogada.compare("Bc2")==0){
+            this->setPosicaoPeca(4,0,6,2);
+        }
+        if (jogada.compare("Bxe4")==0){
+            this->setPosicaoPeca(6,2,4,4);
+        }
+        if (jogada.compare("dxe5")==0){
+            this->setPosicaoPeca(4,3,3,4);
+        }
+        if (jogada.compare("Rxd1")==0){
+            this->setPosicaoPeca(7,5,7,3);
+        }
+    }
+    if (vezJogador==2){
+        if (jogada.compare("e5")==0){
+            this->setPosicaoPeca(1,4,3,4);
+        }
+        
+        if (jogada.compare("Nf6")==0){
+            if (pecas[0][6]=='C'){
+                setPosicaoPeca(0,6,2,5);
+            }
+            if (pecas[4][4]=='C'){
+                setPosicaoPeca(4,4,2,5);
+            }   
+        }
+        
+        if (jogada.compare("d6")==0){
+            this->setPosicaoPeca(1,3,2,3);
+        }
+        if (jogada.compare("Nxe4")==0){
+            this->setPosicaoPeca(2,5,4,4);
+        }
+        
+        if (jogada.compare("Qe7")==0){
+            this->setPosicaoPeca(0,3,1,4);
+        }
+        
+        
+        if (jogada.compare("Qxe2+")==0){
+            this->setPosicaoPeca(1,4,6,4);
+        }
+        
+        if (jogada.compare("Bd7")==0){
+            this->setPosicaoPeca(0,2,1,3);
+        }
+        
+        if (jogada.compare("Be7")==0){
+            this->setPosicaoPeca(0,5,1,4);
+        }
+        
+        if (jogada.compare("Nc6")==0){
+            this->setPosicaoPeca(0,1,2,2);
+        }
+        
+        if (jogada.compare("O-O-O")==0){
+            this->setPosicaoPeca(0,4,0,2);
+            this->setPosicaoPeca(0,0,0,3);
+        }
+        if (jogada.compare("Bxf6")==0){
+            this->setPosicaoPeca(1,4,2,5);
+        }
+        if (jogada.compare("Bd4")==0){
+            this->setPosicaoPeca(2,5,4,3);
+        }
+        if (jogada.compare("Nxe7")==0){
+            this->setPosicaoPeca(2,2,1,4);
+        }
+        if (jogada.compare("Bc5")==0){
+            this->setPosicaoPeca(0,5,3,2);
+        }
+        if (jogada.compare("Nd4")==0){
+            this->setPosicaoPeca(2,2,4,3);
+        }
+        if (jogada.compare("c6")==0){
+            this->setPosicaoPeca(1,2,2,2);
+        }
+        if (jogada.compare("Bxd4")==0){
+            this->setPosicaoPeca(3,2,4,3);
+        }
+        if (jogada.compare("g5")==0){
+            this->setPosicaoPeca(1,6,3,6);
+        }
+        if (jogada.compare("Bb6")==0){
+            this->setPosicaoPeca(4,3,2,1);
+        }
+        if (jogada.compare("Rg8")==0){
+            this->setPosicaoPeca(0,7,0,6);
+        }
+        if (jogada.compare("d5")==0){
+            if(pecas[1][3]=='P'){
+                this->setPosicaoPeca(1,3,3,3);
+            }
+            if(pecas[2][3]=='P'){
+                this->setPosicaoPeca(2,3,3,3);
+            }
+        }
+        if (jogada.compare("dxe4")==0){
+            this->setPosicaoPeca(3,3,4,4);
+        }
+        if (jogada.compare("Qxd1")==0){
+            this->setPosicaoPeca(0,3,7,3);
+        }
+    }
+}
+
+void Tabuleiro::setPosicaoPeca(int linOri, int colOri, int lin, int col){
+    pecas[lin][col] = pecas[linOri][colOri];
+    pecas[linOri][colOri] = ' ';
 }
 
