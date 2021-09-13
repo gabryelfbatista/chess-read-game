@@ -11,7 +11,7 @@
 #include "tabuleiro.cpp"
 
 int main() {
-    Engine xadrez("jogo02.pgn");
+    Engine xadrez("jogo03.pgn");
     return 0;
 }
 
