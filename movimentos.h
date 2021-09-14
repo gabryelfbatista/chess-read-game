@@ -19,8 +19,6 @@ private:
     std::ifstream arquivo;
     
     std::vector<std::string> jogadas;
-    std::vector<std::string> linhas;
-    
     
     std::vector<std::string> jogadaPorJogada; //onde sera salvo movimento por movimento para futura impressao
     std::vector<std::string> jogadasTabuleiro; //vetor onde sera salvo as jogadas sem o numero da rodada, servirá para carregar o tabuleiro

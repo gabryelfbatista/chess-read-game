@@ -9,13 +9,14 @@ class Tabuleiro {
 public:
     Tabuleiro();
     ~Tabuleiro();
-    void carrega_tabuleiro();
-    void imprime_tabuleiro();
-    void verifica_jogada(std::string, int);
+    void carregaTabuleiro();
+    void imprimeTabuleiro();
+    void verificaJogada(std::string, int);
     void setPosicaoPeca(int, int, int, int);
 private:
-    char tabuleiros[33][48];
-    unsigned char bordas = 35;
+    char tabuleiros[33][48]; //tamanho do tabuleiro
+    unsigned char bordas = 35; //bordas = #
+    // uma matriz com as peças
     char pecas[8][8] = {{'T', 'C', 'B', 'Q', 'K', 'B', 'C', 'T'},
                        {'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
                        {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},

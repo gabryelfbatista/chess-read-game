@@ -6,12 +6,9 @@
 #include "engine.h"
 #include "tabuleiro.h"
 #include "movimentos.h"
-#include "movimentos.cpp"
-#include "engine.cpp"
-#include "tabuleiro.cpp"
 
-int main() {
-    Engine xadrez("jogo03.pgn");
+int main(int argc, char *argv[]) {
+    Engine xadrez(argv[1]);
     return 0;
 }
 
